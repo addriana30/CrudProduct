@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org">
+<head th:replace="plantilla/template :: head">
+<meta charset="utf-8"/>
+<title>Product Manager</title>
+</head >
+<body>
+	
+	<header th:replace="plantilla/template :: header"></header >
+	
+	<br>
+	<br>
+	<div class="container">
+	<div class="card bg-light">
+		<div class="card-header bg-dark text-light" th:text="${titule}"></div>
+		<br>
+		<div class="card-boody">
+			<form class="col-md-10 mx-md-auto" th:action="@{/views/products/save}" th:object="${product}" method="post">
+				<div class="form-group mb-3 row">
+					<input type="hidden" th:field="*{id}">
+					<label class="col-md-2 col-form-label" for="name">Product Name:</label>
+					<input type="text" th:field="*{name}" class="form-control-sm col-md-6" id="name" placeholder="Product name">
+					<small class="from-text text-danger" th:if="${#fields.hasErrors('name')}"th:errors="*{name}"></small >
+				</div>
+	
+				<div class="form-group mb-3 row">
+					<label class="col-md-2 col-form-label" for="brand">Brand:</label>
+					<input type="text" th:field="*{brand}" class="form-control-sm col-md-6" id="brand" placeholder="Brand">
+					<small class="from-text text-danger" th:if="${#fields.hasErrors('brand')}"th:errors="*{brand}"></small >
+				</div>
+	
+				<div class="form-group mb-3 row">
+					<label class="col-md-2 col-form-label" for="madein">Made In:</label>
+					<input type="text" th:field="*{madein}" class="form-control-sm col-md-6" id="maidein" placeholder="Made In">
+					<small class="from-text text-danger" th:if="${#fields.hasErrors('madein')}"th:errors="*{madein}"></small >
+				</div>
+	
+				<div class="form-group mb-3 row">
+					<label class="col-md-2 col-form-label" for="price">Price:</label>
+					<input type="text" th:field="*{price}" class="form-control-sm col-md-6" id="price" placeholder="Price">
+					<small class="from-text text-danger" th:if="${#fields.hasErrors('price')}"th:errors="*{price}"></small >
+				</div>
+	
+				<br>
+				<div class="card-footer">
+					<input type="submit" class="btn btn-primary btn-sm" value="Save">
+				</div >
+				
+			</form  >
+		</div>
+	</div>
+	</div > 
+	
+	<footer th:replace="plantilla/template :: footer"></footer>
+	
+</body>
+</html >
+

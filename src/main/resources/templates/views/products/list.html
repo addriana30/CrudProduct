@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org">
+<head th:replace="plantilla/template :: head">
+<meta charset="utf-8"/>
+<title>Product Manager</title>
+</head >
+<body>
+	
+	<header th:replace="plantilla/template :: header"></header >
+	
+	<br>
+	<div class="container text-center">
+		<h1 th:text="${titule}"></h1 > 
+		<div class="container d-grid gap-2 d-md-flex justify-content-md-end">
+			<a href="new" class="btn btn-success" role="button" data-bs-toggle="button">Create New Product</a>
+	    </div>
+	</div >
+	<br>
+	<div class="container"> 
+		<table class="table text-center">
+			<thead class="table-dark">
+				<tr>
+					<th scope="col">Product ID</th>
+					<th scope="col">Name</th>
+					<th scope="col">Brand</th>
+					<th scope="col">Made In</th>
+					<th scope="col">Price</th>
+					<th scope="col">Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="p:${lProduct}">
+					<th scope="row" th:text="${p.id}"></th>
+					<td th:text="${p.name}"></td>
+					<td th:text="${p.brand}"></td>
+					<td th:text="${p.madein}"></td>
+					<td th:text="${p.price}"></td>
+					<td>
+						<a th:href="@{edit/}+${p.id}"  class="btn btn-warning" role="button" data-bs-toggle="button">Edit</a>
+						&nbsp;&nbsp;&nbsp;
+						<a th:href="@{delete/}+${p.id}" class="btn btn-danger" role="button" data-bs-toggle="button">Delete</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div >
+	
+	<footer th:replace="plantilla/template :: footer"></footer>
+	
+</body>
+</html >
